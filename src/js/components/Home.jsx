@@ -1,28 +1,61 @@
-import React from "react";
+import React, { useState } from "react";
 
-//include images into your bundle
-import rigoImage from "../../img/rigo-baby.jpg";
 
-//create your first component
+
 const Home = () => {
-	return (
-		<div className="text-center">
-            
+	const [inputValue, setInputValue] = useState("");
+	const [todos, setTodos] = useState([]);
 
-			<h1 className="text-center mt-5">Hello Rigo!</h1>
-			<p>
-				<img src={rigoImage} />
-			</p>
-			<a href="#" className="btn btn-success">
-				If you see this green button... bootstrap is working...
-			</a>
-			<p>
-				Made by{" "}
-				<a href="http://www.4geeksacademy.com">4Geeks Academy</a>, with
-				love!
-			</p>
+	return (
+		<div className="container d-flex flex-column align-items-center mt-5">
+			<h1 className="todo-header">Lista</h1>
+			
+			<div className="todo-card">
+				<input 
+					type="text" 
+					className="todo-input"
+					placeholder="¿Qué necesitas hacer?"
+					value={inputValue}
+					onChange={(e) => setInputValue(e.target.value)}
+					onKeyDown={(e) => {
+						if (e.key === "Enter" && inputValue.trim() !== "") {
+							setTodos([...todos, inputValue]);
+							setInputValue("");
+						}
+					}}
+				/>
+				
+				<ul className="todo-list">
+					{todos.length === 0 ? (
+						<li className="todo-item empty-message">No hay tareas, agrega una 💛</li>
+					) : (
+						todos.map((tarea, indice) => (
+							<li key={indice} className="todo-item">
+								<span>{tarea}</span>
+
+								<span 
+									className="delete-icon" 
+									onClick={() => {
+										const nuevaLista = todos.filter((_, i) => i !== indice);
+										setTodos(nuevaLista);
+									}}
+								>
+									&#10006;
+								</span>
+							</li>
+						))
+					)}
+				</ul>
+				
+				<div className="todo-footer">
+					Falta{todos.length !== 1 ? "n" : ""} {todos.length} tarea{todos.length !== 1 ? "s" : ""}
+				</div>
+			</div>
 		</div>
 	);
 };
 
+
+
 export default Home;
+

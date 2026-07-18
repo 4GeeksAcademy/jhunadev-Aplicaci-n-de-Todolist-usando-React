@@ -1,11 +1,126 @@
-/* 
+@import url('https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600&display=swap');
 
-    You can write your own styles here...
-    
-    
-    ...Or you can use the import command to include 
-    other sylesheets into your bunde as well, e.j:
-    
-    import 'relative/path/to/stylesheet.scss';
 
-*/
+body {
+    background: linear-gradient(135deg, #fffcf5 0%, #fef2cc 100%);
+    font-family: 'Outfit', sans-serif;
+    min-height: 100vh;
+    margin: 0;
+    color: #4a4a4a;
+}
+
+.todo-header {
+    font-size: 80px;
+    font-weight: 500;
+    color: #d69e2e;
+    text-align: center;
+    margin-bottom: 20px;
+    text-shadow: 2px 2px 4px rgba(214, 158, 46, 0.2);
+}
+
+
+.todo-card {
+    width: 100%;
+    max-width: 500px;
+    border-radius: 12px;
+}
+
+.todo-input {
+    width: 100%;
+    padding: 20px;
+    border: none;
+    border-radius: 12px;
+    background: #ffffff;
+    box-shadow: 0 4px 15px rgba(0,0,0,0.05);
+    font-size: 22px;
+    font-family: inherit;
+    font-weight: 400;
+    outline: none;
+    transition: all 0.3s ease;
+    margin-bottom: 20px;
+}
+
+.todo-input::placeholder {
+    font-style: italic;
+    color: #c4c4c4;
+}
+
+.todo-input:focus {
+    box-shadow: 0 4px 20px rgba(214, 158, 46, 0.3);
+    transform: translateY(-2px);
+}
+
+.todo-list {
+    margin: 0;
+    padding: 0;
+    list-style: none;
+    display: flex;
+    flex-direction: column;
+    gap: 12px; 
+}
+
+.todo-item {
+    font-size: 20px;
+    padding: 15px 20px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background-color: white;
+    border-radius: 10px;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.04);
+    transition: all 0.2s ease;
+    border-left: 4px solid transparent;
+}
+
+.todo-item:hover {
+    transform: translateX(5px);
+    border-left: 4px solid #d69e2e;
+    box-shadow: 0 4px 12px rgba(214, 158, 46, 0.15);
+}
+
+
+
+.empty-message {
+    color: #a0aec0;
+    font-style: italic;
+    justify-content: center;
+    background: transparent;
+    box-shadow: none;
+}
+
+.delete-icon {
+    color: #d69e2e;
+    cursor: pointer;
+    font-size: 16px;
+    opacity: 0;
+    transition: all 0.3s ease;
+    /* Le damos un fondo circular a la X */
+    background: #fff9eb;
+    border-radius: 50%;
+    width: 32px;
+    height: 32px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.todo-item:hover .delete-icon {
+    opacity: 1;
+}
+
+
+.delete-icon:hover {
+    color: #975a16;
+    background: #fef08a;
+    transform: scale(1.1) rotate(90deg);
+}
+
+
+
+.todo-footer {
+    color: #718096;
+    padding: 15px 10px;
+    text-align: right;
+    font-size: 15px;
+    font-weight: 500;
+}
